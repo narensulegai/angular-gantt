@@ -7,95 +7,89 @@
     <meta name="description" content="Angular-gantt : Gantt chart using Angularjs"/>
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
     <title>Angular-gantt</title>
+    <script src="javascripts/helper.js"></script>
+    <script src="javascripts/lib/moment.js"></script>
+    <script src="javascripts/lib/underscore.js"></script>
+    <script src="javascripts/lib/angular.js"></script>
 </head>
 
-<body>
+<body ng-app="ganttDemo">
 
 <!-- HEADER -->
 <div id="header_wrap" class="outer">
-    <header class="inner">
-        <a id="forkme_banner" href="https://github.com/narensulegai/angular-gantt">View on GitHub</a>
 
-        <h1 id="project_title">Angular-gantt</h1>
+    <!--<a id="forkme_banner" href="https://github.com/narensulegai/angular-gantt">View on GitHub</a>-->
 
-        <h2 id="project_tagline">Gantt chart using Angularjs</h2>
+    <h1 id="project_title">Angular-gantt</h1>
 
-        <section id="downloads">
-            <a class="zip_download_link" href="https://github.com/narensulegai/angular-gantt/zipball/master">Download
-                this project as a .zip file</a>
-            <a class="tar_download_link" href="https://github.com/narensulegai/angular-gantt/tarball/master">Download
-                this project as a tar.gz file</a>
-        </section>
-    </header>
+    <h2 id="project_tagline">Gantt chart using Angularjs</h2>
+
 </div>
 
 <!-- MAIN CONTENT -->
-<div id="main_content_wrap" class="outer">
-    <section id="main_content" class="inner">
-        <h3>
-            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span
-                    class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<div class="outer">
 
-        <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author
-            your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish.
-            After your page is generated, you can check out the new branch:</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-    $ git fetch origin
-    $ git checkout gh-pages
-</code></pre>
+    <div ng-controller="SampleGnattChartCtrl" class="sample-gantt-chart" ng-init="predicate='label';rev=false">
+        <div class="sample-gantt-chart" ng-init="predicate='label';rev=false">
+            <!--<div>-->
+                <!--<input type="text" ng-model="search" placeholder="Search name"/>-->
 
-        <p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+                <!--<div>-->
+                    <!--Sort order-->
+                    <!--<a ng-click="rev=true" ng-hide="rev">Descending</a>-->
+                    <!--<a ng-click="rev=false" ng-show="rev">Ascending</a>-->
+                <!--</div>-->
+            <!--</div>-->
 
-        <h3>
-            <a name="designer-templates" class="anchor" href="#designer-templates"><span
-                    class="octicon octicon-link"></span></a>Designer Templates</h3>
+            <div gantt-chart ng-begin="scaleBegin" ng-end="scaleEnd" ng-interval="interval"
+                 ng-label-title="<b>Names</b>" ng-action-title="<b>Alert name</b>" ng-format="formatTime(tic)"
+                 ng-scroll-left="scrollLeft" class="scroll-vertical">
 
-        <p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through
-            them. You can easily go back to edit your page before publishing. After publishing your page, you can
-            revisit the page generator and switch to another theme. Your Page content will be preserved if it remained
-            markdown format.</p>
+                <div ng-repeat="group in groups" ng-init="groupNum = $index">
 
-        <h3>
-            <a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span
-                    class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+                    <div gantt-row>
+                        <div gantt-label-container style="height: 20px;background: #ffff00">
+                            <b>{{ group.group.name }}</b>
+                        </div>
+                        <div gantt-bar-container>
+                            <div gantt-bar ng-begin="highlightRegionStart" ng-end="highlightRegionEnd"
+                                 style="height: 20px;background: #ffff00">
+                            </div>
+                        </div>
+                        <div gantt-action-container style="height: 20px" class="relative">
+                            <div style="left: -74px;" class="absolute">
+                                <div ng-click="group.group.minimized=true" ng-hide="group.group.minimized">
+                                    <a>Minimize</a></div>
+                                <div ng-click="group.group.minimized=false" ng-show="group.group.minimized">
+                                    <a>Maximize</a></div>
+                            </div>
+                        </div>
+                    </div>
 
-        <p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your
-            repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support
-            Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it
-            easy to create site-wide headers and footers without having to copy them across every page. It also offers
-            intelligent blog support and other advanced templating features.</p>
+                </div>
+            </div>
+        </div>
 
-        <h3>
-            <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span
-                    class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+    </div>
 
-        <p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate
-            a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub
-            Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>),
-            PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner
-            (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-        <h3>
-            <a name="support-or-contact" class="anchor" href="#support-or-contact"><span
-                    class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-        <p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a>
-            or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-    </section>
 </div>
 
-<!-- FOOTER  -->
-<div id="footer_wrap" class="outer">
-    <footer class="inner">
-        <p class="copyright">Angular-gantt maintained by <a href="https://github.com/narensulegai">narensulegai</a></p>
-    </footer>
-</div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
+<script src="javascripts/main.js"></script>
+<script src="javascripts/directives/scale.js"></script>
+<script src="javascripts/directives/gantt_chart.js"></script>
+<script src="javascripts/directives/gantt_bar_container.js"></script>
+<script src="javascripts/directives/gantt_bar.js"></script>
+<script src="javascripts/directives/gantt_label_container.js"></script>
+<script src="javascripts/directives/gantt_action_container.js"></script>
+<script src="javascripts/directives/gantt_row.js"></script>
+<script src="javascripts/directives/gantt_dragable_bar.js"></script>
+<script src="javascripts/directives/gantt_resizable_bar.js"></script>
+<script src="javascripts/directives/gantt_chart_marker.js"></script>
+<script src="javascripts/controllers/sample_gnatt_chart.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,127 @@
+.gantt-container, .gantt-left-container, .gantt-right-container {
+    position: relative;
+    float: left;
+}
+
+.gantt-left-container {
+    width: 200px;
+}
+
+[scale] {
+    width: 500px;
+    height: 30px;
+    background: white;
+}
+
+.gantt-right-container {
+    width: 200px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.shift-bar {
+    background: #9ea395;
+    height: 40px;
+}
+
+div[gantt-row], div[gantt-label-container] {
+    border-bottom: 1px solid #cbcbcb;
+}
+
+.gantt-action-title, .gantt-label-title, div[scale] {
+    height: 30px;
+}
+
+.custom-bar {
+    position: relative;
+    height: 100%;
+}
+
+div[gantt-row], div[scale] {
+    width: 5000px;
+}
+
+.gantt-container {
+    width: 560px;
+    overflow: scroll;
+}
+
+.tic .absolute {
+    top: -20px;
+    width: 104.16666666666667px;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.scroll-horizontal {
+    overflow-x: scroll;
+}
+
+.scroll-vertical {
+    overflow-y: scroll;
+}
+
+.scroll-vertical::-webkit-scrollbar {
+    display: none;
+}
+
+.touch-action {
+    -ms-touch-action: none;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+    margin: auto;
+}
+
+.hide-overflow {
+    overflow: hidden;
+}
+
+.right {
+    right: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.top {
+    top: 0;
+}
+
+.bottom {
+    bottom: 0;
+}
