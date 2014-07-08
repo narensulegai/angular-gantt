@@ -3,9 +3,6 @@
 angular.module('ganttDemo')
     .controller('SampleGnattChartCtrl', function ($scope) {
 
-        $scope.currentTime = offset(5);
-        $scope.highlightRegionStart = offset(6);
-        $scope.highlightRegionEnd = offset(7);
         $scope.showDragRegion = false;
         $scope.showResize = false;
 
