@@ -11,7 +11,6 @@
 
     <title>Angular-gantt</title>
     <script src="javascripts/helper.js"></script>
-    <script src="javascripts/lib/moment.js"></script>
     <script src="javascripts/lib/underscore.js"></script>
     <script src="javascripts/lib/angular.js"></script>
 </head>
@@ -19,54 +18,49 @@
 <body ng-app="ganttDemo">
 
 <!-- HEADER -->
-<div id="header_wrap" class="outer">
+<div id="header_wrap">
 
-    <!--<a id="forkme_banner" href="https://github.com/narensulegai/angular-gantt">View on GitHub</a>-->
+    <h1>Angular-gantt</h1>
 
-    <h1 id="project_title">Angular-gantt</h1>
-
-    <h2 id="project_tagline">Gantt chart using Angularjs</h2>
+    <h2>Gantt chart using Angularjs</h2>
 
 </div>
 
 <!-- MAIN CONTENT -->
-<div class="outer">
 
-    <div ng-controller="SampleGnattChartCtrl">
-        <div>
-            <input type="text" ng-model="search" placeholder="Search name"/>
-        </div>
+<div ng-controller="SampleGnattChartCtrl">
+    <div>
+        <input type="text" ng-model="search" placeholder="Search name"/>
+    </div>
 
-        <div gantt-chart ng-begin="scaleBegin" ng-end="scaleEnd" ng-interval="interval"
-             ng-label-title="Label" ng-action-title="Action" ng-format="formatTime(tic)"
-             ng-scroll-left="scrollLeft" class="scroll-vertical">
+    <div gantt-chart ng-begin="scaleBegin" ng-end="scaleEnd" ng-interval="interval"
+         ng-label-title="Label" ng-action-title="Action" ng-format="formatTime(tic)"
+         ng-scroll-left="scrollLeft" class="scroll-vertical">
 
 
-            <div gantt-row ng-repeat="row in data | filter:search">
-                <div gantt-label-container style="background: rgb(228, 228, 98)">
-                    <div style="width: 200px">
-                        {{ row.label }}
+        <div gantt-row ng-repeat="row in data | filter:search">
+            <div gantt-label-container style="background: rgb(228, 228, 98)">
+                <div style="width: 200px">
+                    {{ row.label }}
+                </div>
+            </div>
+            <div gantt-bar-container>
+                <div gantt-bar ng-repeat="bar in row.bars" ng-begin="bar.start" ng-end="bar.end">
+                    <div gantt-dragable-bar
+                         style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px; margin: 10px 0">
+                        {{ bar.label }}
                     </div>
                 </div>
-                <div gantt-bar-container>
-                    <div gantt-bar ng-repeat="bar in row.bars" ng-begin="bar.start" ng-end="bar.end">
-                        <div gantt-dragable-bar
-                             style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px; margin: 10px 0">
-                            {{ bar.label }}
-                        </div>
-                    </div>
-                </div>
-                <div gantt-action-container style="background: rgb(228, 228, 98)">
-                    <div style="width: 200px">
-                        {{ row.label }}
-                    </div>
+            </div>
+            <div gantt-action-container style="background: rgb(228, 228, 98)">
+                <div style="width: 200px">
+                    {{ row.label }}
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
+
 
 <script src="javascripts/main.js"></script>
 <script src="javascripts/directives/scale.js"></script>
