@@ -24,6 +24,10 @@ div[gantt-row] {
     background: white;
 }
 
+div[scale] {
+    background: grey;
+}
+
 div[gantt-row], div[scale] {
     width: 800px;
 }

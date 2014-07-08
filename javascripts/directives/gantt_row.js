@@ -7,9 +7,7 @@ angular.module('ganttDemo')
             templateUrl: 'templates/row.html',
             restrict: 'A',
             transclude: true,
-            scope: {
-                index: '@'
-            },
+            scope: {},
             controller: function ($scope) {
 
                 this.getScale = function () {
@@ -34,10 +32,6 @@ angular.module('ganttDemo')
 
             },
             link: function (scope, element, attrs, ganttChart) {
-
-                attrs.$observe('index', function () {
-                    ganttChart.render();
-                });
 
                 ganttChart.addGanttRow({scope: scope, element: element, attrs: attrs}, scope.index);
 

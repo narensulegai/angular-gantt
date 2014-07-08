@@ -29,7 +29,7 @@ angular.module('ganttDemo')
 
                 this.addGanttRow = function (r) {
                     $scope.rows[r.scope.$id] = r;
-                    $scope.debRender();
+                    $scope.debRender && $scope.debRender();
                 };
 
                 this.removeGanttRow = function (id) {
