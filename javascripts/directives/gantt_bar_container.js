@@ -52,7 +52,6 @@ angular.module('ganttDemo')
                             return 0;
                         }
                         var i = getAvailableSlot(b.scope.ngBegin, b.scope.ngEnd);
-//                        offset = i * b.element.outerHeight();
 
                         offset = i * b.element[0].clientHeight;
 
@@ -76,10 +75,9 @@ angular.module('ganttDemo')
 
                     _.each(scope.bars, function (b) {
                         b.scope.topOffset = getTopOffset(b);
-//                        var h = b.scope.topOffset + b.element.outerHeight();
                         var h = b.scope.topOffset + b.element[0].clientHeight;
                         if (scope.height < h) {
-                            scope.height = h + 'px';
+                            scope.height = h;
                         }
                         b.scope.stagger = scope.ngBegin;
                         b.scope.unitLength = element[0].clientWidth / (scope.ngEnd - scope.ngBegin);

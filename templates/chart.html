@@ -1,6 +1,6 @@
 <div class="gantt-left-container relative">
     <div class="gantt-label-title" ng-class="{absolute:scrollTop>0}" ng-style="{top:scrollTop}">
-        <div ng-bind-html-unsafe="ngLabelTitle"></div>
+        <div>{{ ngLabelTitle }}</div>
     </div>
     <div class="gantt-labels"></div>
 </div>
@@ -11,7 +11,7 @@
 </div>
 <div class="gantt-right-container relative">
     <div class="gantt-action-title" ng-class="{absolute:scrollTop>0}" ng-style="{top:scrollTop}">
-        <div ng-bind-html-unsafe="ngActionTitle"></div>
+        <div>{{ ngActionTitle }}</div>
     </div>
     <div class="gantt-actions"></div>
 </div>

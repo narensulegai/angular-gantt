@@ -289,6 +289,7 @@ Full-Width Styles
 }
 
 #header_wrap {
+    /*background: url("../images/mochaGrunge.png");*/
     background: url("../images/vertical_cloth.png");
     box-shadow: black 0 1px 10px;
 }

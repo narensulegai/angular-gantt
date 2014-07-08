@@ -150,7 +150,7 @@ angular.module('ganttDemo')
         };
 
         $scope.formatTime = function (t) {
-            return '<div class="absolute">' + (moment(t).minutes() % 60 ? '&#8226;' : moment(t).format('HH:mm')) + '</div>';
+            return moment(t).minutes() % 60 ? '•' : moment(t).format('HH:mm');
         };
 
     });

@@ -7,7 +7,7 @@
     <meta name="description" content="Angular-gantt : Gantt chart using Angularjs"/>
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>-->
 
     <title>Angular-gantt</title>
     <script src="javascripts/helper.js"></script>
@@ -35,37 +35,41 @@
 
     <div ng-controller="SampleGnattChartCtrl" class="sample-gantt-chart" ng-init="predicate='label';rev=false">
         <div class="sample-gantt-chart" ng-init="predicate='label';rev=false">
-            <!--<div>-->
-                <!--<input type="text" ng-model="search" placeholder="Search name"/>-->
+            <div>
+                <input type="text" ng-model="search" placeholder="Search name"/>
 
-                <!--<div>-->
-                    <!--Sort order-->
-                    <!--<a ng-click="rev=true" ng-hide="rev">Descending</a>-->
-                    <!--<a ng-click="rev=false" ng-show="rev">Ascending</a>-->
-                <!--</div>-->
-            <!--</div>-->
+                <div>
+                    Sort order
+                    <a ng-click="rev=true" ng-hide="rev">Descending</a>
+                    <a ng-click="rev=false" ng-show="rev">Ascending</a>
+                </div>
+            </div>
 
             <div gantt-chart ng-begin="scaleBegin" ng-end="scaleEnd" ng-interval="interval"
-                 ng-label-title="<b>Names</b>" ng-action-title="<b>Alert name</b>" ng-format="formatTime(tic)"
+                 ng-label-title="Names" ng-action-title="Alert name" ng-format="formatTime(tic)"
                  ng-scroll-left="scrollLeft" class="scroll-vertical">
 
                 <div ng-repeat="group in groups" ng-init="groupNum = $index">
 
                     <div gantt-row>
-                        <div gantt-label-container style="height: 20px;background: #ffff00">
-                            <b>{{ group.group.name }}</b>
-                        </div>
-                        <div gantt-bar-container>
-                            <div gantt-bar ng-begin="highlightRegionStart" ng-end="highlightRegionEnd"
-                                 style="height: 20px;background: #ffff00">
+                        <div gantt-label-container>
+                            <div style="height: 20px;background: #ffff00">
+                                {{ group.group.name }}
                             </div>
                         </div>
-                        <div gantt-action-container style="height: 20px" class="relative">
-                            <div style="left: -74px;" class="absolute">
+                        <div gantt-bar-container>
+                            <div gantt-bar ng-begin="highlightRegionStart" ng-end="highlightRegionEnd">
+                                <div style="height: 20px;background: grey"></div>
+                            </div>
+                        </div>
+                        <div gantt-action-container>
+                            <div style="height: 20px">
                                 <div ng-click="group.group.minimized=true" ng-hide="group.group.minimized">
-                                    <a>Minimize</a></div>
+                                    <a>Minimize</a>
+                                </div>
                                 <div ng-click="group.group.minimized=false" ng-show="group.group.minimized">
-                                    <a>Maximize</a></div>
+                                    <a>Maximize</a>
+                                </div>
                             </div>
                         </div>
                     </div>

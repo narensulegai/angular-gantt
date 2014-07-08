@@ -26,9 +26,7 @@ angular.module('ganttDemo')
                     scope.tics = _.map(_.range(scope.ngBegin, scope.ngEnd, scope.ngInterval), function (tic) {
                         return {label: formatTic(tic)};
                     });
-                    scope.unitLength = element.clientWidth / (scope.ngEnd - scope.ngBegin);
-//                    scope.unitLength = element.width() / (scope.ngEnd - scope.ngBegin);
-
+                    scope.unitLength = element[0].clientWidth / (scope.ngEnd - scope.ngBegin);
                 };
 
                 $timeout(function () {

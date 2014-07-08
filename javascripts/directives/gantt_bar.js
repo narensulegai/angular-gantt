@@ -35,11 +35,11 @@ angular.module('ganttDemo')
                 scope.render = function () {
                     ganttBarContainer.render();
 
-                    scope.width = (scope.ngEnd - scope.ngBegin) * scope.unitLength + 'px';
-                    scope.marginLeft = (scope.ngBegin - scope.stagger) * scope.unitLength + 'px';
+                    scope.width = (scope.ngEnd - scope.ngBegin) * scope.unitLength;
+                    scope.marginLeft = (scope.ngBegin - scope.stagger) * scope.unitLength;
 
                     if (scope.ngAllowOverlap) {
-                        scope.topOffset = '0px';
+                        scope.topOffset = 0;
                     }
                 };
 
