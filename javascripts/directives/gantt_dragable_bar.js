@@ -20,7 +20,6 @@ angular.module('ganttDemo')
 
                 element[0].ondragstart = function (e) {
                     mouseOffset = e.clientX;
-                    element[0].style.opacity = 0;
                     scope.ngDragBegin && scope.ngDragBegin();
                     scope.$apply();
                 };
@@ -34,12 +33,11 @@ angular.module('ganttDemo')
                 };
 
                 element[0].ondragend = function () {
-                    element[0].style.opacity = '';
                     var moveBar = function () {
                         ganttBar.move(offset, offset);
                         scope.$apply();
                     };
-                    if (_.isUndefined(scope.ngDragEnd)) {
+                    if (_.isUndefined(attrs.ngDragEnd)) {
                         moveBar();
                     } else if (scope.ngDragEnd()) {
                         moveBar();

@@ -49,23 +49,25 @@
              ng-scroll-left="scrollLeft" class="scroll-vertical">
 
 
-            <div gantt-row ng-repeat="row in data | filter:search | orderBy : 'label' : reverse">
-                <div gantt-label-container style="background: rgb(228, 228, 98)">
-                    <div>
-                        {{ row.label }}
-                    </div>
-                </div>
-                <div gantt-bar-container>
-                    <div gantt-bar ng-repeat="bar in row.bars" ng-begin="bar.start" ng-end="bar.end">
-                        <div style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px">
-                            {{ bar.label }}
+            <div>
+                <div gantt-row ng-repeat="row in data | filter:search | orderBy : 'label' : reverse">
+                    <div gantt-label-container style="background: rgb(228, 228, 98)">
+                        <div>
+                            {{ row.label }}
                         </div>
                     </div>
-                </div>
-                <div gantt-action-container style="background: rgb(228, 228, 98)">
+                    <div gantt-bar-container>
+                        <div gantt-bar ng-repeat="bar in row.bars" ng-begin="bar.start" ng-end="bar.end">
+                            <div gantt-dragable-bar
+                                 style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px">
+                                {{ bar.label }}
+                            </div>
+                        </div>
+                    </div>
+                    <div gantt-action-container style="background: rgb(228, 228, 98)">
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 
