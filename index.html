@@ -33,52 +33,42 @@
 <div class="outer">
 
 
-    <div ng-controller="SampleGnattChartCtrl" class="sample-gantt-chart" ng-init="predicate='label';rev=false">
-        <div class="sample-gantt-chart" ng-init="predicate='label';rev=false">
+    <div ng-controller="SampleGnattChartCtrl" ng-init="reverse=false">
+        <div>
+            <input type="text" ng-model="search" placeholder="Search name"/>
+
             <div>
-                <input type="text" ng-model="search" placeholder="Search name"/>
-
-                <div>
-                    Sort order
-                    <a ng-click="rev=true" ng-hide="rev">Descending</a>
-                    <a ng-click="rev=false" ng-show="rev">Ascending</a>
-                </div>
-            </div>
-
-            <div gantt-chart ng-begin="scaleBegin" ng-end="scaleEnd" ng-interval="interval"
-                 ng-label-title="Names" ng-action-title="Alert name" ng-format="formatTime(tic)"
-                 ng-scroll-left="scrollLeft" class="scroll-vertical">
-
-                <div ng-repeat="group in groups" ng-init="groupNum = $index">
-
-                    <div gantt-row>
-                        <div gantt-label-container>
-                            <div style="height: 20px;background: #ffff00">
-                                {{ group.group.name }}
-                            </div>
-                        </div>
-                        <div gantt-bar-container>
-                            <div gantt-bar ng-begin="highlightRegionStart" ng-end="highlightRegionEnd">
-                                <div style="height: 20px;background: grey"></div>
-                            </div>
-                        </div>
-                        <div gantt-action-container>
-                            <div style="height: 20px">
-                                <div ng-click="group.group.minimized=true" ng-hide="group.group.minimized">
-                                    <a>Minimize</a>
-                                </div>
-                                <div ng-click="group.group.minimized=false" ng-show="group.group.minimized">
-                                    <a>Maximize</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                Sort order
+                <a ng-click="reverse=true" ng-hide="reverse">Descending</a>
+                <a ng-click="reverse=false" ng-show="reverse">Ascending</a>
             </div>
         </div>
 
+        <div gantt-chart ng-begin="scaleBegin" ng-end="scaleEnd" ng-interval="interval"
+             ng-label-title="Label" ng-action-title="Action" ng-format="formatTime(tic)"
+             ng-scroll-left="scrollLeft" class="scroll-vertical">
+
+
+            <div gantt-row ng-repeat="row in data | filter:search | orderBy : 'label' : reverse">
+                <div gantt-label-container style="background: rgb(228, 228, 98)">
+                    <div>
+                        {{ row.label }}
+                    </div>
+                </div>
+                <div gantt-bar-container>
+                    <div gantt-bar ng-repeat="bar in row.bars" ng-begin="bar.start" ng-end="bar.end">
+                        <div style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px">
+                            {{ bar.label }}
+                        </div>
+                    </div>
+                </div>
+                <div gantt-action-container style="background: rgb(228, 228, 98)">
+                </div>
+            </div>
+
+        </div>
     </div>
+
 
 </div>
 

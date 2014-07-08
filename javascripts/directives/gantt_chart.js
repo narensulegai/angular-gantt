@@ -78,7 +78,7 @@ angular.module('ganttDemo')
                             var r = scope.rows[angular.element(e).scope().$id];
 
                             if (r.scope.ganttLabelContainer) {
-                                r.scope.ganttLabelContainer.element[0].clientHeight = r.scope.height;
+                                r.scope.ganttLabelContainer.element[0].style.height = r.element[0].clientHeight + 'px';
                                 m.push(r.scope.ganttLabelContainer.element);
                                 element[0].querySelector('.gantt-labels').appendChild(r.scope.ganttLabelContainer.element[0]);
                             }
@@ -90,7 +90,7 @@ angular.module('ganttDemo')
                         if (angular.element(e).scope()) {
                             var r = scope.rows[angular.element(e).scope().$id];
                             if (r.scope.ganttActionContainer) {
-                                r.scope.ganttActionContainer.element[0].clientHeight = r.scope.height;
+                                r.scope.ganttActionContainer.element[0].style.height = r.element[0].clientHeight + 'px';
                                 m.push(r.scope.ganttActionContainer.element);
                                 element[0].querySelector('.gantt-actions').appendChild(r.scope.ganttActionContainer.element[0]);
                             }
@@ -112,7 +112,7 @@ angular.module('ganttDemo')
                 };
 
                 scope.purge = function () {
-                    _.each(element.find('[gantt-action-container], [gantt-label-container]'), function (e) {
+                    _.each(element[0].querySelectorAll('[gantt-action-container], [gantt-label-container]'), function (e) {
                         if (angular.element(e).scope().$$destroyed) {
                             angular.element(e).remove();
                         }

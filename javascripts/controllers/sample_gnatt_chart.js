@@ -7,9 +7,7 @@ angular.module('ganttDemo')
             return moment().startOf('day').add('hours', i).toDate().getTime();
         };
 
-        $scope.scaleBegin = offset(0);
-        $scope.scaleEnd = offset(24);
-        $scope.interval = offset(0.5) - offset(0);
+
         $scope.currentTime = offset(5);
         $scope.highlightRegionStart = offset(6);
         $scope.highlightRegionEnd = offset(7);
@@ -43,96 +41,23 @@ angular.module('ganttDemo')
             return true;
         };
 
-        $scope.groups = [
-            {
-                group: {name: 'Group 1', minimized: false},
-                rows: [
-                    {
-                        label: 'Naren',
-                        tasks: [
-                            {
-                                start: offset(1),
-                                end: offset(2),
-                                label: 'Third Naren'
-                            }
-                        ]
-                    },
-                    {
-                        label: 'Parker',
-                        tasks: [
-                            {
-                                start: offset(11),
-                                end: offset(13),
-                                label: 'Fourth Parker'
-                            }
-                        ]
-                    },
-                    {
-                        label: 'Zen',
-                        tasks: [
-                            {
-                                start: offset(12),
-                                end: offset(13),
-                                label: 'Fifth Zen'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                group: {name: 'Group 2', minimized: false},
-                rows: [
-                    {
-                        label: 'Aditya',
-                        tasks: [
-                            {
-                                start: offset(6),
-                                end: offset(9),
-                                label: 'First Aditya'
-                            },
-                            {
-                                start: offset(7),
-                                end: offset(10),
-                                label: 'First Aditya'
-                            }
-                        ],
-                        shifts: [
-                            {
-                                start: offset(0),
-                                end: offset(6),
-                                type: 'OUT'
-                            },
-                            {
-                                start: offset(6),
-                                end: offset(19),
-                                type: 'IN'
-                            }
-                        ]
-                    },
-                    {
-                        label: 'Chris',
-                        tasks: [
-                            {
-                                start: offset(7),
-                                end: offset(9),
-                                label: 'Second Chris'
-                            }
-                        ],
-                        shifts: [
-                            {
-                                start: offset(0),
-                                end: offset(6),
-                                type: 'OUT'
-                            },
-                            {
-                                start: offset(6),
-                                end: offset(19),
-                                type: 'IN'
-                            }
-                        ]
-                    }
-                ]
-            }
+        $scope.scaleBegin = 0;
+        $scope.scaleEnd = 10;
+        $scope.interval = 1;
+
+        $scope.data = [
+            {label: 'A', bars: [
+                {label: 'A1', start: 1, end: 2},
+                {label: 'A2', start: 2, end: 4}
+            ]},
+            {label: 'B', bars: [
+                {label: 'B1', start: 0, end: 1},
+                {label: 'B2', start: 4, end: 5}
+            ]},
+            {label: 'C', bars: [
+                {label: 'C1', start: 1, end: 3},
+                {label: 'C2', start: 5, end: 6}
+            ]}
         ];
 
         $scope.remove = function (row) {
@@ -150,7 +75,7 @@ angular.module('ganttDemo')
         };
 
         $scope.formatTime = function (t) {
-            return moment(t).minutes() % 60 ? '•' : moment(t).format('HH:mm');
+            return t % 2 ? t : '•';
         };
 
     });

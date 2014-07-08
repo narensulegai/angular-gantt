@@ -7,12 +7,6 @@
     width: 200px;
 }
 
-[scale] {
-    width: 500px;
-    height: 30px;
-    background: white;
-}
-
 .gantt-right-container {
     width: 200px;
 }
@@ -26,21 +20,23 @@
     height: 40px;
 }
 
-div[gantt-row], div[gantt-label-container] {
-    border-bottom: 1px solid #cbcbcb;
+div[gantt-row], div[gantt-label-container], div[gantt-action-container] {
+
+    border-bottom: 10px solid #cbcbcb;
+}
+
+div[gantt-row] {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .gantt-action-title, .gantt-label-title, div[scale] {
-    height: 30px;
-}
-
-.custom-bar {
-    position: relative;
-    height: 100%;
+    height: 24px;
+    background: white;
 }
 
 div[gantt-row], div[scale] {
-    width: 5000px;
+    width: 800px;
 }
 
 .gantt-container {
@@ -61,22 +57,12 @@ div[gantt-row], div[scale] {
 
 .scroll-horizontal {
     overflow-x: scroll;
+    overflow-y: auto;
 }
 
 .scroll-vertical {
     overflow-y: scroll;
-}
-
-.scroll-vertical::-webkit-scrollbar {
-    display: none;
-}
-
-.touch-action {
-    -ms-touch-action: none;
-}
-
-.italic {
-    font-style: italic;
+    overflow-x: auto;
 }
 
 .relative {
