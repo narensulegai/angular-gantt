@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ganttDemo')
-    .directive('ganttBar', ['$timeout', function ($timeout) {
+    .directive('ganttBar', function ($timeout) {
         return {
             require: '^ganttBarContainer',
             transclude: true,
@@ -33,6 +33,7 @@ angular.module('ganttDemo')
                 });
 
                 scope.render = function () {
+
                     ganttBarContainer.render();
 
                     scope.width = (scope.ngEnd - scope.ngBegin) * scope.unitLength;
@@ -52,4 +53,4 @@ angular.module('ganttDemo')
                 $timeout(scope.render, 0);
             }
         };
-    }]);
+    });

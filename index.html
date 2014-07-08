@@ -32,40 +32,30 @@
 <!-- MAIN CONTENT -->
 <div class="outer">
 
-
-    <div ng-controller="SampleGnattChartCtrl" ng-init="reverse=false">
+    <div ng-controller="SampleGnattChartCtrl">
         <div>
             <input type="text" ng-model="search" placeholder="Search name"/>
-
-            <div>
-                Sort order
-                <a ng-click="reverse=true" ng-hide="reverse">Descending</a>
-                <a ng-click="reverse=false" ng-show="reverse">Ascending</a>
-            </div>
         </div>
 
         <div gantt-chart ng-begin="scaleBegin" ng-end="scaleEnd" ng-interval="interval"
              ng-label-title="Label" ng-action-title="Action" ng-format="formatTime(tic)"
              ng-scroll-left="scrollLeft" class="scroll-vertical">
 
-
-            <div>
-                <div gantt-row ng-repeat="row in data | filter:search | orderBy : 'label' : reverse">
-                    <div gantt-label-container style="background: rgb(228, 228, 98)">
-                        <div>
-                            {{ row.label }}
+            <div gantt-row ng-repeat="row in data | filter:search">
+                <div gantt-label-container style="background: rgb(228, 228, 98)">
+                    <div>
+                        {{ row.label }}
+                    </div>
+                </div>
+                <div gantt-bar-container>
+                    <div gantt-bar ng-repeat="bar in row.bars" ng-begin="bar.start" ng-end="bar.end">
+                        <div gantt-dragable-bar
+                             style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px">
+                            {{ bar.label }}
                         </div>
                     </div>
-                    <div gantt-bar-container>
-                        <div gantt-bar ng-repeat="bar in row.bars" ng-begin="bar.start" ng-end="bar.end">
-                            <div gantt-dragable-bar
-                                 style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px">
-                                {{ bar.label }}
-                            </div>
-                        </div>
-                    </div>
-                    <div gantt-action-container style="background: rgb(228, 228, 98)">
-                    </div>
+                </div>
+                <div gantt-action-container style="background: rgb(228, 228, 98)">
                 </div>
             </div>
         </div>
