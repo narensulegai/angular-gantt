@@ -73,30 +73,26 @@ angular.module('ganttDemo')
                 scope.render = function () {
                     var rowEle = element[0].querySelectorAll('[gantt-row] > div');
 
-                    var labels = _.reduce(rowEle, function (m, e) {
+                    angular.forEach(rowEle, function (e) {
                         if (angular.element(e).scope()) {
                             var r = scope.rows[angular.element(e).scope().$id];
 
                             if (r.scope.ganttLabelContainer) {
                                 r.scope.ganttLabelContainer.element[0].style.height = r.element[0].clientHeight + 'px';
-                                m.push(r.scope.ganttLabelContainer.element);
                                 element[0].querySelector('.gantt-labels').appendChild(r.scope.ganttLabelContainer.element[0]);
                             }
                         }
-                        return m;
-                    }, []);
+                    });
 
-                    var actions = _.reduce(rowEle, function (m, e) {
+                    angular.forEach(rowEle, function (e) {
                         if (angular.element(e).scope()) {
                             var r = scope.rows[angular.element(e).scope().$id];
                             if (r.scope.ganttActionContainer) {
                                 r.scope.ganttActionContainer.element[0].style.height = r.element[0].clientHeight + 'px';
-                                m.push(r.scope.ganttActionContainer.element);
                                 element[0].querySelector('.gantt-actions').appendChild(r.scope.ganttActionContainer.element[0]);
                             }
                         }
-                        return m;
-                    }, []);
+                    });
 
                 };
                 scope.debRender = _.debounce(scope.render, 300);
@@ -112,7 +108,7 @@ angular.module('ganttDemo')
                 };
 
                 scope.purge = function () {
-                    _.each(element[0].querySelectorAll('[gantt-action-container], [gantt-label-container]'), function (e) {
+                    angular.forEach(element[0].querySelectorAll('[gantt-action-container], [gantt-label-container]'), function (e) {
                         if (angular.element(e).scope().$$destroyed) {
                             angular.element(e).remove();
                         }

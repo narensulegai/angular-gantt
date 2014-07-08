@@ -11,7 +11,7 @@
 }
 
 div[gantt-row], div[gantt-label-container], div[gantt-action-container] {
-    border-bottom: 1px solid #cbcbcb;
+    border-bottom: 10px solid #cbcbcb;
 }
 
 div[gantt-row] {
