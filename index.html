@@ -43,19 +43,22 @@
 
             <div gantt-row ng-repeat="row in data | filter:search">
                 <div gantt-label-container style="background: rgb(228, 228, 98)">
-                    <div>
+                    <div style="width: 200px">
                         {{ row.label }}
                     </div>
                 </div>
                 <div gantt-bar-container>
                     <div gantt-bar ng-repeat="bar in row.bars" ng-begin="bar.start" ng-end="bar.end">
                         <div gantt-dragable-bar
-                             style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px">
+                             style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px; margin: 10px 0">
                             {{ bar.label }}
                         </div>
                     </div>
                 </div>
                 <div gantt-action-container style="background: rgb(228, 228, 98)">
+                    <div style="width: 200px">
+                        {{ row.label }}
+                    </div>
                 </div>
             </div>
         </div>

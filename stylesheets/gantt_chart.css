@@ -1,28 +1,17 @@
 .gantt-container, .gantt-left-container, .gantt-right-container {
-    position: relative;
     float: left;
 }
 
-.gantt-left-container {
-    width: 200px;
-}
-
-.gantt-right-container {
-    width: 200px;
+.gantt-container {
+    position: relative;
 }
 
 .clearfix {
     clear: both;
 }
 
-.shift-bar {
-    background: #9ea395;
-    height: 40px;
-}
-
 div[gantt-row], div[gantt-label-container], div[gantt-action-container] {
-
-    border-bottom: 10px solid #cbcbcb;
+    border-bottom: 1px solid #cbcbcb;
 }
 
 div[gantt-row] {
