@@ -22,6 +22,9 @@ div[gantt-row] {
 .gantt-action-title, .gantt-label-title, div[scale] {
     height: 24px;
     background: white;
+    width: 100%;
+    left: 0;
+    top: 0;
 }
 
 div[scale] {
@@ -34,7 +37,6 @@ div[gantt-row], div[scale] {
 
 .gantt-container {
     width: 560px;
-    overflow: scroll;
 }
 
 .tic .tic-label {
@@ -101,4 +103,8 @@ div[gantt-row], div[scale] {
 
 .bottom {
     bottom: 0;
+}
+
+.layer-1 {
+    z-index: 1;
 }

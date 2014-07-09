@@ -47,10 +47,12 @@ angular.module('ganttDemo')
             },
             link: function (scope, element, attrs, ganttChart) {
 
-//                element[0].onscroll = _.debounce(function (e) {
-//                    scope.scrollTop = $(e.target).scrollTop();
-//                    scope.$apply();
-//                }, 10);
+                scope.scrollTop = 0;
+
+                element[0].onscroll = _.debounce(function (e) {
+                    scope.scrollTop = e.target.scrollTop;
+                    scope.$apply();
+                }, 0);
 
                 scope.$watch('ngScrollLeft', function () {
 

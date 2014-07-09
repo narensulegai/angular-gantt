@@ -35,7 +35,7 @@
 
     <div gantt-chart ng-begin="scaleBegin" ng-end="scaleEnd" ng-interval="interval"
          ng-label-title="Label" ng-action-title="Action" ng-format="formatTime(tic)"
-         ng-scroll-left="scrollLeft" class="scroll-vertical">
+         ng-scroll-left="scrollLeft" class="scroll-vertical" style="height: 200px;">
 
 
         <div gantt-row ng-repeat="row in data | filter:search">
