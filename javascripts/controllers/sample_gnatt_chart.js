@@ -39,7 +39,7 @@ angular.module('ganttDemo')
 
         $scope.data = [];
 
-        _.each(_.range(0, 10), function () {
+        _.each(_.range(0, 1), function () {
             $scope.data.push({label: 'A', bars: [
                     {label: 'A1', start: 1, end: 2},
                     {label: 'A2', start: 2, end: 4}

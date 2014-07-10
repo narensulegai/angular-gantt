@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ganttDemo')
-    .directive('ganttChart', function ($timeout) {
+    .directive('ganttChart', function () {
         return {
             templateUrl: 'templates/chart.html',
             restrict: 'A',
@@ -86,17 +86,17 @@ angular.module('ganttDemo')
 //                        actions.appendChild(a);
 
 
-                        if (l !== null) {
-                            l.style.height = e.clientHeight + 'px';
-                            l.style.position = '';
-                            labels.appendChild(l);
-                        }
-
-                        if (a !== null) {
-                            a.style.height = e.clientHeight + 'px';
-                            a.style.position = '';
-                            actions.appendChild(a);
-                        }
+//                        if (l !== null) {
+//                            l.style.height = e.clientHeight + 'px';
+//                            l.style.position = '';
+//                            labels.appendChild(l);
+//                        }
+//
+//                        if (a !== null) {
+//                            a.style.height = e.clientHeight + 'px';
+//                            a.style.position = '';
+//                            actions.appendChild(a);
+//                        }
 
                         if (angular.element(e).scope()) {
                             var r = scope.rows[angular.element(e).scope().$id];
