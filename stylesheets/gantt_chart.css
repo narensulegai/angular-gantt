@@ -27,6 +27,10 @@ div[gantt-row] {
     top: 0;
 }
 
+.gantt-labels, .gantt-actions {
+    width: 200px;
+}
+
 div[scale] {
     background: grey;
 }

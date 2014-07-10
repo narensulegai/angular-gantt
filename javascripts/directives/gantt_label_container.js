@@ -8,6 +8,7 @@ angular.module('ganttDemo')
             transclude: true,
             require: '^?ganttRow',
             link: function postLink(scope, element, attrs, ganttRow) {
+                element[0].style.position = 'absolute';
                 ganttRow.addGanttLabelContainer({
                     scope: scope,
                     element: element,

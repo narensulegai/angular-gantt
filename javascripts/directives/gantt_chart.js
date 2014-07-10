@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ganttDemo')
-    .directive('ganttChart', function () {
+    .directive('ganttChart', function ($timeout) {
         return {
             templateUrl: 'templates/chart.html',
             restrict: 'A',
@@ -29,7 +29,6 @@ angular.module('ganttDemo')
 
                 this.addGanttRow = function (r) {
                     $scope.rows[r.scope.$id] = r;
-                    $scope.debRender && $scope.debRender();
                 };
 
                 this.removeGanttRow = function (id) {
@@ -74,30 +73,48 @@ angular.module('ganttDemo')
 
                 scope.render = function () {
                     var rowEle = element[0].querySelectorAll('[gantt-row] > div');
+                    var labels = element[0].querySelector('.gantt-labels');
+                    var actions = element[0].querySelector('.gantt-actions');
 
                     angular.forEach(rowEle, function (e) {
+                        var l = e.querySelector('[gantt-label-container]');
+                        var a = e.querySelector('[gantt-action-container]');
+
+//                        a.style.height = l.style.height = e.clientHeight + 'px';
+//                        a.style.position = l.style.position = '';
+//                        labels.appendChild(l);
+//                        actions.appendChild(a);
+
+
+                        if (l !== null) {
+                            l.style.height = e.clientHeight + 'px';
+                            l.style.position = '';
+                            labels.appendChild(l);
+                        }
+
+                        if (a !== null) {
+                            a.style.height = e.clientHeight + 'px';
+                            a.style.position = '';
+                            actions.appendChild(a);
+                        }
+
                         if (angular.element(e).scope()) {
                             var r = scope.rows[angular.element(e).scope().$id];
-
                             if (r.scope.ganttLabelContainer) {
                                 r.scope.ganttLabelContainer.element[0].style.height = r.element[0].clientHeight + 'px';
-                                element[0].querySelector('.gantt-labels').appendChild(r.scope.ganttLabelContainer.element[0]);
+                                r.scope.ganttLabelContainer.element[0].style.position = '';
+                                labels.appendChild(r.scope.ganttLabelContainer.element[0]);
                             }
-                        }
-                    });
-
-                    angular.forEach(rowEle, function (e) {
-                        if (angular.element(e).scope()) {
-                            var r = scope.rows[angular.element(e).scope().$id];
                             if (r.scope.ganttActionContainer) {
                                 r.scope.ganttActionContainer.element[0].style.height = r.element[0].clientHeight + 'px';
-                                element[0].querySelector('.gantt-actions').appendChild(r.scope.ganttActionContainer.element[0]);
+                                r.scope.ganttActionContainer.element[0].style.position = '';
+                                actions.appendChild(r.scope.ganttActionContainer.element[0]);
                             }
                         }
                     });
-
                 };
-                scope.debRender = _.debounce(scope.render, 300);
+
+                scope.debRender = _.debounce(scope.render, 0);
 
                 scope.formatTic = function (tic) {
                     var t = tic;

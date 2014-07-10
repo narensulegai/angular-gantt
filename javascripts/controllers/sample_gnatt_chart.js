@@ -37,20 +37,22 @@ angular.module('ganttDemo')
         $scope.scaleEnd = 10;
         $scope.interval = 1;
 
-        $scope.data = [
-            {label: 'A', bars: [
-                {label: 'A1', start: 1, end: 2},
-                {label: 'A2', start: 2, end: 4}
-            ]},
-            {label: 'B', bars: [
-                {label: 'B1', start: 0, end: 1},
-                {label: 'B2', start: 4, end: 5}
-            ]},
-            {label: 'C', bars: [
-                {label: 'C1', start: 1, end: 3},
-                {label: 'C2', start: 5, end: 6}
-            ]}
-        ];
+        $scope.data = [];
+
+        _.each(_.range(0, 10), function () {
+            $scope.data.push({label: 'A', bars: [
+                    {label: 'A1', start: 1, end: 2},
+                    {label: 'A2', start: 2, end: 4}
+                ]},
+                {label: 'B', bars: [
+                    {label: 'B1', start: 0, end: 1},
+                    {label: 'B2', start: 4, end: 5}
+                ]},
+                {label: 'C', bars: [
+                    {label: 'C1', start: 1, end: 3},
+                    {label: 'C2', start: 5, end: 6}
+                ]});
+        });
 
         $scope.remove = function (row) {
             alert(row.label);

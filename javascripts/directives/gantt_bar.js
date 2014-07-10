@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ganttDemo')
-    .directive('ganttBar', function ($timeout) {
+    .directive('ganttBar', function () {
         return {
             require: '^ganttBarContainer',
             transclude: true,
@@ -49,8 +49,7 @@ angular.module('ganttDemo')
                         scope.render();
                     }
                 });
-
-                $timeout(scope.render, 0);
+                scope.render();
             }
         };
     });

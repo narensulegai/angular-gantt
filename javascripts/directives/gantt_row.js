@@ -27,22 +27,19 @@ angular.module('ganttDemo')
                 };
 
                 this.render = function () {
-                    $scope.debRender();
+                    $scope.render();
                 }
 
             },
             link: function (scope, element, attrs, ganttChart) {
 
-                ganttChart.addGanttRow({scope: scope, element: element, attrs: attrs}, scope.index);
+                ganttChart.addGanttRow({scope: scope, element: element, attrs: attrs});
 
                 scope.getScale = ganttChart.getScale;
 
                 scope.render = function () {
-                    scope.height = scope.ganttBarContainer.element[0].clientHeight;
                     ganttChart.render();
                 };
-
-                scope.debRender = _.debounce(scope.render, 300);
 
                 scope.$on('$destroy', function () {
                     ganttChart.removeGanttRow(scope.$id);

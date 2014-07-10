@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ganttDemo')
-    .directive('scale', function ($timeout) {
+    .directive('scale', function () {
         return {
             templateUrl: 'templates/scale.html',
             restrict: 'A',
@@ -28,11 +28,7 @@ angular.module('ganttDemo')
                     });
                     scope.unitLength = element[0].clientWidth / (scope.ngEnd - scope.ngBegin);
                 };
-
-                $timeout(function () {
-                    setTics();
-                }, 0);
-
+                setTics();
             }
         }
     });
