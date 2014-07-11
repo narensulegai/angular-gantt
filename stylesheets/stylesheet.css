@@ -95,3 +95,9 @@ Small Device Styles
         font-size: 14px;
     }
 }
+
+/*disqus*/
+#disqus_thread {
+    width: 50%;
+    margin: 20px auto 0 auto;
+}
