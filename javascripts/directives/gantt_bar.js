@@ -26,14 +26,13 @@ angular.module('ganttDemo')
 
       },
       link: function postLink(scope, element, attrs, ganttBarContainer) {
+
         ganttBarContainer.addGanttBar({
           scope: scope,
-          element: element,
-          attrs: attrs
+          element: element
         });
 
         scope.render = function() {
-
           ganttBarContainer.render();
 
           scope.width = (scope.ngEnd - scope.ngBegin) * scope.unitLength;
