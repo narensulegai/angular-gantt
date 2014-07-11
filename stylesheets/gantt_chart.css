@@ -1,0 +1,108 @@
+.gantt-container, .gantt-left-container, .gantt-right-container {
+    float: left;
+}
+
+.gantt-container {
+    position: relative;
+}
+
+.clearfix {
+    clear: both;
+}
+
+div[gantt-row], div[gantt-label-container], div[gantt-action-container] {
+    border-bottom: 10px solid #cbcbcb;
+}
+
+div[gantt-row] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.gantt-action-title, .gantt-label-title, div[scale] {
+    height: 24px;
+    background: white;
+    width: 100%;
+}
+
+div[scale] {
+    background: grey;
+}
+
+div[gantt-row], div[scale] {
+    width: 800px;
+}
+
+.gantt-container {
+    width: 560px;
+}
+
+.tic .tic-label {
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.scroll-horizontal {
+    overflow-x: scroll;
+    overflow-y: auto;
+}
+
+.scroll-vertical {
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+    margin: auto;
+}
+
+.hide-overflow {
+    overflow: hidden;
+}
+
+.right {
+    right: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.top {
+    top: 0;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.layer-1 {
+    z-index: 1;
+}

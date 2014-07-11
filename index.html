@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+    <meta name="description" content="Angular-gantt : Gantt chart using Angularjs"/>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <title>Angular-gantt</title>
+    <script src="javascripts/helper.js"></script>
+    <script src="javascripts/lib/underscore.js"></script>
+    <script src="javascripts/lib/angular.js"></script>
+  </head>
+
+  <body ng-app="ganttDemo">
+
+    <!-- HEADER -->
+    <div id="header_wrap">
+
+      <h1>Angular-gantt</h1>
+
+      <h3>Gantt chart using Angularjs</h3>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div ng-controller="SampleGnattChartCtrl">
+      <div>
+        <input type="text" ng-model="search" placeholder="Find label"/>
+      </div>
+
+      <div gantt-chart ng-begin="scaleBegin" ng-end="scaleEnd" ng-interval="interval"
+           ng-label-title="Label" ng-action-title="Action" ng-format="formatTime(tic)"
+           ng-scroll-left="scrollLeft" class="scroll-vertical" style="width: 1000px">
+
+
+        <div gantt-row ng-repeat="row in data | filter:search">
+          <div gantt-label-container style="background: rgb(228, 228, 98)">
+            <div style="width: 200px">
+              {{ row.label }}
+            </div>
+          </div>
+          <div gantt-bar-container>
+            <div gantt-bar ng-repeat="bar in row.bars" ng-begin="bar.start" ng-end="bar.end">
+              <div gantt-dragable-bar
+                   style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px; margin: 10px 0">
+                {{ bar.label }}
+              </div>
+            </div>
+          </div>
+          <div gantt-action-container style="background: rgb(228, 228, 98)">
+            <div style="width: 200px">
+              {{ row.label }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="disqus_thread" style=""></div>
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'angular-gantt'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/directives/scale.js"></script>
+    <script src="javascripts/directives/gantt_chart.js"></script>
+    <script src="javascripts/directives/gantt_bar_container.js"></script>
+    <script src="javascripts/directives/gantt_bar.js"></script>
+    <script src="javascripts/directives/gantt_label_container.js"></script>
+    <script src="javascripts/directives/gantt_action_container.js"></script>
+    <script src="javascripts/directives/gantt_row.js"></script>
+    <script src="javascripts/directives/gantt_dragable_bar.js"></script>
+    <script src="javascripts/directives/gantt_resizable_bar.js"></script>
+    <script src="javascripts/directives/gantt_chart_marker.js"></script>
+    <script src="javascripts/controllers/sample_gnatt_chart.js"></script>
+
+  </body>
+</html>

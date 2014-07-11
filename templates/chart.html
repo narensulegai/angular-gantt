@@ -1,0 +1,18 @@
+<div class="gantt-left-container relative">
+    <div class="gantt-label-title layer-1 relative" ng-style="{top:scrollTop + 'px'}">
+        {{ ngLabelTitle }}
+    </div>
+    <div class="gantt-labels"></div>
+</div>
+<div class="gantt-container scroll-horizontal relative">
+    <div scale ng-begin="ngBegin" ng-end="ngEnd" ng-interval="ngInterval" ng-format="formatTic(tic)"
+         ng-style="{top:scrollTop + 'px'}" class="relative layer-1"></div>
+    <div ng-transclude></div>
+</div>
+<div class="gantt-right-container relative">
+    <div class="gantt-action-title relative layer-1" ng-style="{top:scrollTop + 'px'}">
+        {{ ngActionTitle }}
+    </div>
+    <div class="gantt-actions"></div>
+</div>
+<div class="clearfix"></div>
