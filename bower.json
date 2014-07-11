@@ -1,0 +1,25 @@
+{
+  "name": "angular-gantt",
+  "version": "0.0.0",
+  "homepage": "https://github.com/narensulegai/angular-gantt",
+  "authors": [
+    "Naren Sulegai <86naren@gmail.com>"
+  ],
+  "description": "Gantt chart using Angularjs",
+  "main": ".",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "gantt chart",
+    "angular"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "index.html",
+    "params.json",
+    "bower.json",
+    "images"
+  ]
+}

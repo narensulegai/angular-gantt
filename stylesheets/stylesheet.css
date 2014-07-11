@@ -82,7 +82,7 @@ Full-Width Styles
 #header_wrap {
     /*background: url("../images/mochaGrunge.png");*/
     background: url("../images/vertical_cloth.png");
-    padding: 30px 0 20px 30px;
+    padding: 15px 0 30px 50px;
     box-shadow: black 0 1px 10px;
 }
 
@@ -100,8 +100,4 @@ Small Device Styles
 #disqus_thread {
     width: 50%;
     margin: 20px auto 0 auto;
-}
-
-#footer {
-    display: none;
 }
