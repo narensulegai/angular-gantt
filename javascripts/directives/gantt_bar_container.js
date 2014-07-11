@@ -20,8 +20,6 @@ angular.module('ganttDemo')
         }
       },
       link: function postLink(scope, element, attrs, ganttRow) {
-        ganttRow.addGanttBarContainer({scope: scope, element: element, attrs: attrs});
-
         var debRowRenderer = _.debounce(ganttRow.render, 0);
 
         scope.render = function() {

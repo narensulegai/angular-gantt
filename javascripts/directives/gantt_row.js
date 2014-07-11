@@ -14,10 +14,6 @@ angular.module('ganttDemo')
           return $scope.getScale();
         };
 
-        this.addGanttBarContainer = function(e) {
-          $scope.ganttBarContainer = e;
-        };
-
         this.render = function() {
           $scope.render();
         }

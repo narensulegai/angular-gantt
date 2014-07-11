@@ -77,12 +77,15 @@ angular.module('ganttDemo')
         });
 
         scope.render = function() {
+          var rows = element[0].querySelectorAll('[gantt-row] > div');
           var labels = element[0].querySelector('.gantt-labels');
           var actions = element[0].querySelector('.gantt-actions');
 
-          angular.forEach(scope.rows, function(r) {
-            labels.appendChild(r.labelEle);
-            actions.appendChild(r.actionEle);
+          angular.forEach(rows, function(r) {
+            var id = angular.element(r).scope().$id;
+            var row = _.where(scope.rows, {id: id})[0];
+            labels.appendChild(row.labelEle);
+            actions.appendChild(row.actionEle);
           });
         };
 
