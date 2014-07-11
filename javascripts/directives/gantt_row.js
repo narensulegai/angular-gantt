@@ -14,16 +14,8 @@ angular.module('ganttDemo')
           return $scope.getScale();
         };
 
-        this.addGanttLabelContainer = function(l) {
-          $scope.ganttLabelContainer = l;
-        };
-
         this.addGanttBarContainer = function(e) {
           $scope.ganttBarContainer = e;
-        };
-
-        this.addGanttActionContainer = function(a) {
-          $scope.ganttActionContainer = a;
         };
 
         this.render = function() {
@@ -32,9 +24,11 @@ angular.module('ganttDemo')
 
       },
       link: function(scope, element, attrs, ganttChart) {
-        var row = {id: scope.$id, scope: scope, element: element, attrs: attrs,
+        var row = {
+          id: scope.$id,
           labelEle: element[0].querySelector('[gantt-label-container]'),
-          actionEle: element[0].querySelector('[gantt-action-container]')};
+          actionEle: element[0].querySelector('[gantt-action-container]')
+        };
 
         ganttChart.addGanttRow(row);
 

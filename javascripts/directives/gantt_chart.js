@@ -17,7 +17,7 @@ angular.module('ganttDemo')
       },
       controller: function($scope, $element) {
 
-        $scope.rows = {};
+        $scope.rows = [];
 
         this.getScale = function() {
           return {
@@ -28,12 +28,17 @@ angular.module('ganttDemo')
         };
 
         this.addGanttRow = function(r) {
-          $scope.rows[r.scope.$id] = r;
+          $scope.rows.push(r);
         };
 
         this.removeGanttRow = function(id) {
-          delete $scope.rows[id];
-          $scope.purge();
+          angular.forEach($scope.rows, function(r, i) {
+            if (r.id == id) {
+              $scope.rows[i].labelEle.remove();
+              $scope.rows[i].actionEle.remove();
+              delete $scope.rows[i];
+            }
+          });
         };
 
         this.getOffset = function(offset) {
@@ -44,7 +49,7 @@ angular.module('ganttDemo')
           $scope.debRender();
         };
       },
-      link: function(scope, element, attrs, ganttChart) {
+      link: function(scope, element, attrs) {
 
         scope.scrollTop = 0;
 
@@ -55,58 +60,29 @@ angular.module('ganttDemo')
 
         scope.$watch('ngScrollLeft', function() {
 
-//                    if (_.isNumber(scope.ngScrollLeft)) {
-//                        var scrollLeft = ganttChart.getOffset(scope.ngScrollLeft);
-//                        var ganttRowsEle = element.find('.gantt-rows')[0];
-//                        var currentScrollLeft = ganttRowsEle.scrollLeft;
+//          if (_.isNumber(scope.ngScrollLeft)) {
+//            var scrollLeft = ganttChart.getOffset(scope.ngScrollLeft);
+//            var ganttRowsEle = element.find('.gantt-rows')[0];
+//            var currentScrollLeft = ganttRowsEle.scrollLeft;
 //
-//                        var width = $(ganttRowsEle).width();
+//            var width = $(ganttRowsEle).width();
 //
-//                        if (scrollLeft <= currentScrollLeft) {
-//                            ganttRowsEle.scrollLeft = scrollLeft;
-//                        }
-//                        if (scrollLeft >= currentScrollLeft + width) {
-//                            ganttRowsEle.scrollLeft = scrollLeft - width;
-//                        }
-//                    }
+//            if (scrollLeft <= currentScrollLeft) {
+//              ganttRowsEle.scrollLeft = scrollLeft;
+//            }
+//            if (scrollLeft >= currentScrollLeft + width) {
+//              ganttRowsEle.scrollLeft = scrollLeft - width;
+//            }
+//          }
         });
 
         scope.render = function() {
-          console.log('rendering gantt chart');
-          var rowEle = element[0].querySelectorAll('[gantt-row] > div');
           var labels = element[0].querySelector('.gantt-labels');
           var actions = element[0].querySelector('.gantt-actions');
 
-          angular.forEach(rowEle, function(e) {
-//                        var l = e.querySelector('[gantt-label-container]');
-//                        var a = e.querySelector('[gantt-action-container]');
-
-//                        a.style.height = l.style.height = e.clientHeight + 'px';
-//                        a.style.position = l.style.position = '';
-//                        labels.appendChild(l);
-//                        actions.appendChild(a);
-
-//                        if (l !== null) {
-//                            l.style.height = e.clientHeight + 'px';
-//                            l.style.position = '';
-//                            labels.appendChild(l);
-//                        }
-//
-//                        if (a !== null) {
-//                            a.style.height = e.clientHeight + 'px';
-//                            a.style.position = '';
-//                            actions.appendChild(a);
-//                        }
-
-            if (angular.element(e).scope()) {
-              var r = scope.rows[angular.element(e).scope().$id];
-              if (r.scope.ganttLabelContainer) {
-                labels.appendChild(r.scope.ganttLabelContainer.element[0]);
-              }
-              if (r.scope.ganttActionContainer) {
-                actions.appendChild(r.scope.ganttActionContainer.element[0]);
-              }
-            }
+          angular.forEach(scope.rows, function(r) {
+            labels.appendChild(r.labelEle);
+            actions.appendChild(r.actionEle);
           });
         };
 
@@ -120,14 +96,6 @@ angular.module('ganttDemo')
             });
           }
           return t + ''; //to string
-        };
-
-        scope.purge = function() {
-          angular.forEach(element[0].querySelectorAll('[gantt-action-container], [gantt-label-container]'), function(e) {
-            if (angular.element(e).scope().$$destroyed) {
-              angular.element(e).remove();
-            }
-          });
         };
 
         scope.$on('$destroy', function() {
