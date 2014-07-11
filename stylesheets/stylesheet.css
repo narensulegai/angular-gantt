@@ -2,7 +2,6 @@
 Slate Theme for GitHub Pages
 by Jason Costello, @jsncostello
 *******************************************************************************/
-
 @import url(pygment_trac.css);
 @import url(gantt_chart.css);
 
@@ -54,7 +53,6 @@ body {
     color: #373737;
     background: url("../images/wavecut.png");
     font-size: 16px;
-    /*font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;*/
     font-family: 'Roboto', sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -62,8 +60,19 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     color: #f5f5df;
-    /*font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;*/
-    /*font-family: 'Roboto', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 40px;
+    padding: 10px 0 5px;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 20px;
 }
 
 /*******************************************************************************
@@ -73,6 +82,7 @@ Full-Width Styles
 #header_wrap {
     /*background: url("../images/mochaGrunge.png");*/
     background: url("../images/vertical_cloth.png");
+    padding: 30px 0 20px 30px;
     box-shadow: black 0 1px 10px;
 }
 

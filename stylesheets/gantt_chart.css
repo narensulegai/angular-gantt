@@ -23,12 +23,6 @@ div[gantt-row] {
     height: 24px;
     background: white;
     width: 100%;
-    left: 0;
-    top: 0;
-}
-
-.gantt-labels, .gantt-actions {
-    width: 200px;
 }
 
 div[scale] {
