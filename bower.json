@@ -15,7 +15,7 @@
     "angular"
   ],
   "license": "MIT",
-  "private": true,
+  "private": false,
   "ignore": [
     "index.html",
     "params.json",
