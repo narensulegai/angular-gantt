@@ -3,7 +3,7 @@
 angular.module('ganttDemo')
   .directive('ganttActionContainer', function() {
     return {
-      templateUrl: 'templates/action_container.html',
+      template: '<div ng-transclude></div>',
       restrict: 'A',
       transclude: true,
       link: function postLink(scope, element, attrs) {
