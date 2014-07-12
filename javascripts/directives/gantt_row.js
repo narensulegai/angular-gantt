@@ -4,7 +4,7 @@ angular.module('ganttDemo')
   .directive('ganttRow', function() {
     return {
       require: '^ganttChart',
-      templateUrl: 'templates/row.html',
+      template: '<div ng-transclude style="position: relative"></div>',
       restrict: 'A',
       transclude: true,
       scope: {},

@@ -3,7 +3,7 @@
 angular.module('ganttDemo')
   .directive('ganttBarContainer', function() {
     return {
-      templateUrl: 'templates/bar_container.html',
+      template: '<div ng-transclude></div>',
       restrict: 'A',
       transclude: true,
       require: '^ganttRow',
@@ -71,7 +71,7 @@ angular.module('ganttDemo')
             });
           };
 
-          scope.height = '';
+          scope.height = 0;
 
           _.each(scope.bars, function(b) {
             b.scope.topOffset = getTopOffset(b);
@@ -79,6 +79,9 @@ angular.module('ganttDemo')
             if (scope.height < h) {
               scope.height = h;
             }
+
+            element[0].style.height = scope.height + 'px';
+
             b.scope.stagger = scope.ngBegin;
             b.scope.unitLength = element[0].clientWidth / (scope.ngEnd - scope.ngBegin);
             b.scope.isOverlapped = isOverlapped(b);
