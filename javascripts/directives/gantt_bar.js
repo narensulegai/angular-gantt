@@ -5,12 +5,9 @@ angular.module('ganttDemo')
     return {
       require: '^ganttBarContainer',
       transclude: true,
-      template: '<div ' +
-        'ng-style="{width:width + \'px\', left:marginLeft + \'px\', top:topOffset + \'px\'}" ' +
-        'style="position: absolute" ' +
-        'ng-class="{\'gantt-bar-overlapped\':isOverlapped}">' +
-        '<div ng-transclude></div>' +
-        '</div>',
+      template: '<div ng-style="{width:width + \'px\', left:marginLeft + \'px\', top:topOffset + \'px\'}" style="position: absolute" ng-class="{\'gantt-bar-overlapped\':isOverlapped}"> \
+          <div ng-transclude></div> \
+        </div>',
       restrict: 'A',
       replace: true,
       scope: {

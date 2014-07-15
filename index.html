@@ -18,47 +18,54 @@
   <body ng-app="ganttDemo">
 
     <!-- HEADER -->
-    <div id="header_wrap">
+    <div class="header">
 
-      <h1>angular-gantt-chart</h1>
+      <div class="content">
+        <h1>angular-gantt-chart</h1>
 
-      <h3>Gantt chart using Angularjs</h3>
+        <h3>Gantt chart using Angularjs</h3>
+      </div>
 
     </div>
 
     <!-- MAIN CONTENT -->
 
-    <div ng-controller="SampleGnattChartCtrl" style="padding: 15px 0 30px 50px">
+    <div ng-controller="SampleGnattChartCtrl" ng-init="rev=false" class="content small-top-margin">
+
       <div>
-        <input type="text" ng-model="search" placeholder="Find label"/>
+        <input type="text" ng-model="search" placeholder="Search" class="search-box"/>
+        Sort&nbsp;
+        <a ng-show="rev" ng-click="rev=false" class="pointer">Z-A</a>
+        <a ng-hide="rev" ng-click="rev=true" class="pointer ">A-Z</a>
       </div>
 
       <div gantt-chart ng-begin="scaleBegin" ng-end="scaleEnd" ng-interval="interval"
            ng-label-title="Label" ng-action-title="Action" ng-format="formatTime(tic)"
-           ng-scroll-left="scrollLeft" class="scroll-vertical" style="width: 1000px">
+           ng-scroll-left="scrollLeft" class="small-top-margin">
 
+        <div gantt-row ng-repeat="row in data | filter:search | orderBy:'label':rev">
 
-        <div gantt-row ng-repeat="row in data | filter:search">
-          <div gantt-label-container style="background: rgb(228, 228, 98)">
-            <div style="width: 200px">
-              {{ row.label }}
-            </div>
+          <div gantt-label-container>
+            {{ row.label }}
           </div>
+
           <div gantt-bar-container>
             <div gantt-bar ng-repeat="bar in row.bars" ng-begin="bar.start" ng-end="bar.end">
-              <div gantt-dragable-bar
-                   style="height: 20px;background: grey;border: 10px solid crimson;padding: 10px; margin: 10px 0">
-                {{ bar.label }}
+              <div gantt-dragable-bar>
+                <div class="custom-bar">
+                  {{ bar.label }}
+                </div>
               </div>
             </div>
           </div>
-          <div gantt-action-container style="background: rgb(228, 228, 98)">
-            <div style="width: 200px">
-              {{ row.label }}
-            </div>
+
+          <div gantt-action-container>
+            {{ row.label }}
           </div>
+
         </div>
       </div>
+
     </div>
 
     <div id="disqus_thread"></div>
@@ -77,7 +84,6 @@
     </script>
 
     <script src="javascripts/main.js"></script>
-    <script src="javascripts/directives/scale.js"></script>
     <script src="javascripts/directives/gantt_chart.js"></script>
     <script src="javascripts/directives/gantt_bar_container.js"></script>
     <script src="javascripts/directives/gantt_bar.js"></script>

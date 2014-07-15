@@ -41,7 +41,7 @@ angular.module('ganttDemo')
 
     _.each(_.range(0, 1), function() {
       $scope.data.push({label: 'A', bars: [
-          {label: 'A1', start: 1, end: 2},
+          {label: 'A1', start: 2, end: 3},
           {label: 'A2', start: 2, end: 4}
         ]},
         {label: 'B', bars: [
@@ -51,7 +51,15 @@ angular.module('ganttDemo')
         {label: 'C', bars: [
           {label: 'C1', start: 1, end: 3},
           {label: 'C2', start: 5, end: 6}
-        ]});
+        ]},
+//        {label: 'D', bars: [
+//          {label: 'D1', start: 4, end: 8},
+//          {label: 'D2', start: 5, end: 6}
+//        ]},
+        {label: 'E', bars: [
+          {label: 'E1', start: 1, end: 3},
+          {label: 'E2', start: 5, end: 6}
+        ]})
     });
 
     $scope.remove = function(row) {

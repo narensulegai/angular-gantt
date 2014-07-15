@@ -76,6 +76,25 @@ angular.module('ganttDemo')
 //          }
         });
 
+        var formatTic = function(tic) {
+          var t = tic;
+          if (attrs.ngFormat) { //if formatter is specified
+            t = scope.ngFormat({
+              tic: tic
+            });
+          }
+          return t + ''; //to string
+        };
+
+        var setTics = function() {
+          scope.tics = _.map(_.range(scope.ngBegin, scope.ngEnd, scope.ngInterval), function(tic) {
+            return {label: formatTic(tic)};
+          });
+          scope.unitLength = element[0].querySelector('.gantt-scale-container').clientWidth / (scope.ngEnd - scope.ngBegin);
+        };
+
+        setTics();
+
         scope.render = function() {
           var rows = element[0].querySelectorAll('[gantt-row] > div');
           var labels = element[0].querySelector('.gantt-labels');
@@ -90,16 +109,6 @@ angular.module('ganttDemo')
         };
 
         scope.debRender = _.debounce(scope.render, 100, true);
-
-        scope.formatTic = function(tic) {
-          var t = tic;
-          if (attrs.ngFormat) { //if formatter is specified
-            t = scope.ngFormat({
-              tic: tic
-            });
-          }
-          return t + ''; //to string
-        };
 
         scope.$on('$destroy', function() {
           element[0].onscroll = null;

@@ -49,7 +49,6 @@ Theme Styles
 *******************************************************************************/
 
 body {
-    box-sizing: border-box;
     color: #373737;
     background: url("../images/wavecut.png");
     font-size: 16px;
@@ -76,11 +75,38 @@ h3 {
 Full-Width Styles
 *******************************************************************************/
 
-#header_wrap {
+.header {
     /*background: url("../images/mochaGrunge.png");*/
     background: url("../images/vertical_cloth.png");
-    padding: 15px 0 30px 50px;
     box-shadow: black 0 1px 10px;
+    padding: 20px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.content {
+    width: 960px;
+    margin: auto;
+}
+
+.small-top-margin {
+    margin-top: 10px;
+}
+
+.search-box {
+    outline: none;
+    height: 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+.pointer {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 /*******************************************************************************

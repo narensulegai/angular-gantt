@@ -26,6 +26,10 @@ angular.module('ganttDemo')
           actionEle: element[0].querySelector('[gantt-action-container]')
         };
 
+        scope.$watch('$parent.$index', function() {
+          ganttChart.render();
+        });
+
         ganttChart.addGanttRow(row);
 
         scope.getScale = ganttChart.getScale;
@@ -33,7 +37,6 @@ angular.module('ganttDemo')
         scope.render = function() {
           row.actionEle.style.height = row.labelEle.style.height = element[0].clientHeight + 'px';
           row.actionEle.style.position = row.labelEle.style.position = '';
-          ganttChart.render();
         };
 
         scope.$on('$destroy', function() {
