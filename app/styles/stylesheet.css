@@ -1,0 +1,126 @@
+/*******************************************************************************
+Slate Theme for GitHub Pages
+by Jason Costello, @jsncostello
+*******************************************************************************/
+/*@import url(pygment_trac.css);
+@import url(gantt_chart.css);*/
+
+/*******************************************************************************
+MeyerWeb Reset
+*******************************************************************************/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*******************************************************************************
+Theme Styles
+*******************************************************************************/
+
+body {
+    color: #373737;
+    background: url("../images/wavecut.png");
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #f5f5df;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 56px;
+    line-height: 60px;
+    padding: 10px 0 4px;
+    font-family: 'Lobster', cursive;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+/*******************************************************************************
+Full-Width Styles
+*******************************************************************************/
+
+.header {
+    /*background: url("../images/mochaGrunge.png");*/
+    background: url("../images/vertical_cloth.png");
+    box-shadow: black 0 1px 10px;
+    padding: 20px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.content {
+    width: 960px;
+    margin: auto;
+}
+
+.small-top-margin {
+    margin-top: 10px;
+}
+
+.search-box {
+    outline: none;
+    height: 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+.pointer {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/*******************************************************************************
+Small Device Styles
+*******************************************************************************/
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+/*disqus*/
+#disqus_thread {
+    width: 50%;
+    margin: 20px auto 0 auto;
+}

@@ -16,7 +16,8 @@
 
 .gantt-body-container {
     overflow-x: scroll;
-    overflow-y: auto;
+    /*fix this*/
+    overflow-y: hidden;
     width: 60%;
 }
 
