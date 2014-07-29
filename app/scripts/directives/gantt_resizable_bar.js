@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ganttDemo')
+angular.module('angularGanttChart')
   .directive('ganttResizableBar', function() {
     return {
       templateUrl: 'views/gantt_resizable_bar.html',

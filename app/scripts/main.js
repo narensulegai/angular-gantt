@@ -1,3 +1,3 @@
 "use strict";
 
-angular.module('ganttDemo', []);
+angular.module('ganttDemo', ['angularGanttChart']);

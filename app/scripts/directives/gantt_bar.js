@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ganttDemo')
+angular.module('angularGanttChart')
   .directive('ganttBar', function() {
     return {
       require: '^ganttBarContainer',

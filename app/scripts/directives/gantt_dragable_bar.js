@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ganttDemo')
+angular.module('angularGanttChart')
   .directive('ganttDragableBar', function() {
     return {
       templateUrl: 'views/gantt_dragable_bar.html',

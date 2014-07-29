@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ganttDemo')
+angular.module('angularGanttChart')
   .directive('ganttBarContainer', function() {
     return {
       templateUrl: 'views/gantt_bar_container.html',
