@@ -1,0 +1,54 @@
+.gantt-action-title, .gantt-label-title, .gantt-scale-container {
+    z-index: 1;
+    background: white;
+    position: relative;
+    padding: 2px 0;
+}
+
+.gantt-scale-container, .gantt-row-container {
+    width: 1000px;
+}
+
+.gantt-left-container, .gantt-right-container, .gantt-body-container {
+    float: left;
+    width: 20%;
+}
+
+.gantt-body-container {
+    overflow-x: scroll;
+    /*fix this*/
+    overflow-y: hidden;
+    width: 60%;
+}
+
+.gantt-scale-container, .gantt-container {
+    position: relative;
+}
+
+.gantt-scale-container:after, .gantt-container:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.tic {
+    float: left;
+}
+
+.custom-bar {
+    padding: 5px 0;
+    margin: 10px 0;
+    text-align: center;
+    border: 2px solid crimson;
+}
+
+div[gantt-label-container], div[gantt-action-container] {
+    background: rgb(228, 228, 98);
+}
+
+div[gantt-row], div[gantt-label-container], div[gantt-action-container] {
+    border-bottom: 1px solid white;
+}

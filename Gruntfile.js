@@ -303,6 +303,10 @@ module.exports = function(grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      gh: {
+        dest: '<%= yeoman.dist %>/src/angular_gantt_chart.css',
+        src: '<%= yeoman.app %>/styles/gantt_chart.css'
       }
     },
 
@@ -347,7 +351,7 @@ module.exports = function(grunt) {
     //   dist: {}
     // },
     html2js: {
-      gh_pages: {
+      gh: {
         options: {
           // custom options, see below
           rename: function(name) {
@@ -356,17 +360,17 @@ module.exports = function(grunt) {
         },
         main: {
           src: ['<%= yeoman.app %>/views/**/*.html'],
-          dest: '<%= yeoman.dist %>/gh_pages/angular_gantt_chart_templates.js'
+          dest: '.tmp/angular_gantt_chart_templates.js'
         }
       }
     },
     concat: {
-      gh_pages: {
+      gh: {
         files: [
           {
-            dest: '<%= yeoman.dist %>/gh_pages/angular_gantt_chart.js',
+            dest: '<%= yeoman.dist %>/src/angular_gantt_chart.js',
             src: [
-              "<%= yeoman.dist %>/gh_pages/angular_gantt_chart_templates.js",
+              ".tmp/angular_gantt_chart_templates.js",
               "<%= yeoman.app %>/scripts/directives/gantt_chart.js",
               "<%= yeoman.app %>/scripts/directives/gantt_bar_container.js",
               "<%= yeoman.app %>/scripts/directives/gantt_bar.js",
@@ -441,8 +445,9 @@ module.exports = function(grunt) {
     'build'
   ]);
 
-  grunt.registerTask('gh_pages', [
-    'html2js:gh_pages',
-    'concat:gh_pages'
+  grunt.registerTask('gh', [
+    'html2js:gh',
+    'concat:gh',
+    'copy:gh'
   ]);
 };
