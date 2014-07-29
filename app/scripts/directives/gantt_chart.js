@@ -51,30 +51,30 @@ angular.module('angularGanttChart')
       },
       link: function(scope, element, attrs) {
 
-        scope.scrollTop = 0;
+        var debounce = function(func, wait, immediate) {
+          var args, result, thisArg, timeoutId;
 
-        element[0].onscroll = _.debounce(function(e) {
-          scope.scrollTop = e.target.scrollTop;
-          scope.$apply();
-        }, 0);
+          function delayed() {
+            timeoutId = null;
+            if (!immediate) {
+              result = func.apply(thisArg, args);
+            }
+          }
 
-        scope.$watch('ngScrollLeft', function() {
+          return function() {
+            var isImmediate = immediate && !timeoutId;
+            args = arguments;
+            thisArg = this;
 
-//          if (_.isNumber(scope.ngScrollLeft)) {
-//            var scrollLeft = ganttChart.getOffset(scope.ngScrollLeft);
-//            var ganttRowsEle = element.find('.gantt-rows')[0];
-//            var currentScrollLeft = ganttRowsEle.scrollLeft;
-//
-//            var width = $(ganttRowsEle).width();
-//
-//            if (scrollLeft <= currentScrollLeft) {
-//              ganttRowsEle.scrollLeft = scrollLeft;
-//            }
-//            if (scrollLeft >= currentScrollLeft + width) {
-//              ganttRowsEle.scrollLeft = scrollLeft - width;
-//            }
-//          }
-        });
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(delayed, wait);
+
+            if (isImmediate) {
+              result = func.apply(thisArg, args);
+            }
+            return result;
+          };
+        };
 
         var formatTic = function(tic) {
           var t = tic;
@@ -87,13 +87,16 @@ angular.module('angularGanttChart')
         };
 
         var setTics = function() {
-          scope.tics = _.map(_.range(scope.ngBegin, scope.ngEnd, scope.ngInterval), function(tic) {
+          var range = [];
+
+          for (var s = parseFloat(scope.ngBegin); s < parseFloat(scope.ngEnd); s = s + parseFloat(scope.ngInterval)) {
+            range.push(s);
+          }
+          scope.tics = range.map(function(tic) {
             return {label: formatTic(tic)};
           });
           scope.unitLength = element[0].querySelector('.gantt-scale-container').clientWidth / (scope.ngEnd - scope.ngBegin);
         };
-
-        setTics();
 
         scope.render = function() {
           var rows = element[0].querySelectorAll('[gantt-row] > div');
@@ -102,13 +105,27 @@ angular.module('angularGanttChart')
 
           angular.forEach(rows, function(r) {
             var id = angular.element(r).scope().$id;
-            var row = _.where(scope.rows, {id: id})[0];
+            var row;
+            for (var i = 0; i < scope.rows.length; i++) {
+              if (scope.rows[i] && scope.rows[i].id == id) {
+                row = scope.rows[i];
+              }
+            }
             labels.appendChild(row.labelEle);
             actions.appendChild(row.actionEle);
           });
         };
 
-        scope.debRender = _.debounce(scope.render, 100, true);
+        setTics();
+
+        scope.debRender = debounce(scope.render, 100, true);
+
+        scope.scrollTop = 0;
+
+        element[0].onscroll = debounce(function(e) {
+          scope.scrollTop = e.target.scrollTop;
+          scope.$apply();
+        }, 0);
 
         scope.$on('$destroy', function() {
           element[0].onscroll = null;

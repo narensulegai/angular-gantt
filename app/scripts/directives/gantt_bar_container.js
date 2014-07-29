@@ -20,11 +20,10 @@ angular.module('angularGanttChart')
         }
       },
       link: function postLink(scope, element, attrs, ganttRow) {
-        var debRowRenderer = _.debounce(ganttRow.render, 0);
 
         scope.render = function() {
 
-          _.extend(scope, ganttRow.getScale());
+          angular.extend(scope, ganttRow.getScale());
 
           var offset = 0;
           var slotsMap = [];
@@ -36,8 +35,8 @@ angular.module('angularGanttChart')
 
           var getAvailableSlot = function(startPoint, endPoint) {
 
-            return _.min(_.reduce(slotsMap, function(m, bar, i) {
-              var overlapped = _.any(slotsMap[i], function(bar) {
+            return Math.min(slotsMap.reduce(function(m, bar, i) {
+              var overlapped = slotsMap[i].some(function(bar) {
                 return doesOverlap(startPoint, endPoint, bar.start, bar.end);
               });
               if (!overlapped) {
@@ -66,14 +65,14 @@ angular.module('angularGanttChart')
           };
 
           var isOverlapped = function(bar) {
-            return _.any(scope.bars, function(b) {
+            return scope.bars.some(function(b) {
               return bar.scope.$id == b.scope.$id ? false : doesOverlap(b.scope.ngBegin, b.scope.ngEnd, bar.scope.ngBegin, bar.scope.ngEnd);
             });
           };
 
           scope.height = 0;
 
-          _.each(scope.bars, function(b) {
+          scope.bars.forEach(function(b) {
             b.scope.topOffset = getTopOffset(b);
             var h = b.scope.topOffset + b.element[0].clientHeight;
             if (scope.height < h) {
@@ -87,7 +86,7 @@ angular.module('angularGanttChart')
             b.scope.isOverlapped = isOverlapped(b);
           });
 
-          debRowRenderer();
+          ganttRow.render();
 
         };
       }

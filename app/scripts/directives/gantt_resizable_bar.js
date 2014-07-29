@@ -40,7 +40,7 @@ angular.module('angularGanttChart')
             scope.ngLeftOnly ? ganttBar.move(offset, 0) : ganttBar.move(0, offset);
             scope.$apply();
           };
-          if (_.isUndefined(scope.ngDragEnd)) {
+          if (scope.ngDragEnd === undefined) {
             moveBar();
           } else if (scope.ngDragEnd()) {
             moveBar();

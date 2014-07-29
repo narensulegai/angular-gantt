@@ -16,7 +16,7 @@ angular.module('angularGanttChart')
         scope.$watch('ngBegin + ngEnd', function() {
           scope.style = {};
           scope.style.left = ganttChart.getOffset(scope.ngBegin);
-          if (!_.isUndefined(scope.ngEnd)) {
+          if (scope.ngEnd !== undefined) {
             scope.style.width = ganttChart.getOffset(scope.ngEnd) - scope.style.left;
           }
         });

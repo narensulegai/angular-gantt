@@ -37,7 +37,7 @@ angular.module('angularGanttChart')
             ganttBar.move(offset, offset);
             scope.$apply();
           };
-          if (_.isUndefined(attrs.ngDragEnd)) {
+          if (attrs.ngDragEnd === undefined) {
             moveBar();
           } else if (scope.ngDragEnd()) {
             moveBar();
