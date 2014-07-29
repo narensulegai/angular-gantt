@@ -1,8 +1,5 @@
 .gantt-action-title, .gantt-label-title, .gantt-scale-container {
-    z-index: 1;
-    background: white;
     position: relative;
-    padding: 2px 0;
 }
 
 .gantt-scale-container, .gantt-row-container {
@@ -36,6 +33,13 @@
 
 .tic {
     float: left;
+}
+
+/*Extra*/
+.gantt-action-title, .gantt-label-title, .gantt-scale-container {
+    background: white;
+    z-index: 1;
+    padding: 2px 0;
 }
 
 .custom-bar {

@@ -1,11 +1,12 @@
 {
   "name": "angular-gantt-chart",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "dependencies": {
     "angular": ">=1.2.15",
     "underscore": "~1.6.0"
   },
-  "main": ["dist/src/angular_gantt_chart.js", "dist/src/angular_gantt_chart.css"],
+  "main": ["angular_gantt_chart.js", "angular_gantt_chart.css"],
+  "ignore": ["**/*", "!angular_gantt_chart.js", "!angular_gantt_chart.css", "!README.md"],
   "homepage": "http://narensulegai.github.io/angular-gantt/",
   "devDependencies": {
   }

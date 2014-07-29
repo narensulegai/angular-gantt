@@ -305,7 +305,7 @@ module.exports = function(grunt) {
         src: '{,*/}*.css'
       },
       gh: {
-        dest: '<%= yeoman.dist %>/src/angular_gantt_chart.css',
+        dest: 'angular_gantt_chart.css',
         src: '<%= yeoman.app %>/styles/gantt_chart.css'
       }
     },
@@ -368,7 +368,7 @@ module.exports = function(grunt) {
       gh: {
         files: [
           {
-            dest: '<%= yeoman.dist %>/src/angular_gantt_chart.js',
+            dest: 'angular_gantt_chart.js',
             src: [
               ".tmp/angular_gantt_chart_templates.js",
               "<%= yeoman.app %>/scripts/directives/gantt_chart.js",
@@ -449,5 +449,11 @@ module.exports = function(grunt) {
     'html2js:gh',
     'concat:gh',
     'copy:gh'
+  ]);
+
+  grunt.registerTask('bower', [
+    'html2js:gh',
+    'concat:bower',
+    'copy:bower'
   ]);
 };
