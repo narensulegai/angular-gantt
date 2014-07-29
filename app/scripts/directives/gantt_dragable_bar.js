@@ -3,7 +3,7 @@
 angular.module('ganttDemo')
   .directive('ganttDragableBar', function() {
     return {
-      template: '<div ng-transclude></div>',
+      templateUrl: 'views/gantt_dragable_bar.html',
       restrict: 'A',
       require: '^ganttBar',
       transclude: true,

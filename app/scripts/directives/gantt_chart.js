@@ -3,7 +3,7 @@
 angular.module('ganttDemo')
   .directive('ganttChart', function() {
     return {
-      templateUrl: 'views/chart.html',
+      templateUrl: 'views/gantt_chart.html',
       restrict: 'A',
       transclude: true,
       scope: {

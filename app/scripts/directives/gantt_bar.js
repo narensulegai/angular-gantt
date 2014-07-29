@@ -4,10 +4,8 @@ angular.module('ganttDemo')
   .directive('ganttBar', function() {
     return {
       require: '^ganttBarContainer',
+      templateUrl: 'views/gantt_bar.html',
       transclude: true,
-      template: '<div ng-style="{width:width + \'px\', left:marginLeft + \'px\', top:topOffset + \'px\'}" style="position: absolute" ng-class="{\'gantt-bar-overlapped\':isOverlapped}"> \
-          <div ng-transclude></div> \
-        </div>',
       restrict: 'A',
       replace: true,
       scope: {
