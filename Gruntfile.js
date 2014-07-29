@@ -351,17 +351,15 @@ module.exports = function(grunt) {
     //   dist: {}
     // },
     html2js: {
-      gh: {
-        options: {
-          // custom options, see below
-          rename: function(name) {
-            return name.replace('../app/views/', 'views/');
-          }
-        },
-        main: {
-          src: ['<%= yeoman.app %>/views/**/*.html'],
-          dest: '.tmp/angular_gantt_chart_templates.js'
+      options: {
+        // custom options, see below
+        rename: function(name) {
+          return name.replace('../app/views/', 'views/');
         }
+      },
+      gh: {
+        src: ['<%= yeoman.app %>/views/*.html'],
+        dest: '.tmp/angular_gantt_chart_templates.js'
       }
     },
     concat: {
@@ -451,9 +449,4 @@ module.exports = function(grunt) {
     'copy:gh'
   ]);
 
-  grunt.registerTask('bower', [
-    'html2js:gh',
-    'concat:bower',
-    'copy:bower'
-  ]);
 };

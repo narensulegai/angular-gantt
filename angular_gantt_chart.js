@@ -1,6 +1,80 @@
+angular.module('angularGanttChart', ['views/gantt_action_container.html', 'views/gantt_bar.html', 'views/gantt_bar_container.html', 'views/gantt_chart.html', 'views/gantt_chart_marker.html', 'views/gantt_dragable_bar.html', 'views/gantt_label_container.html', 'views/gantt_resizable_bar.html', 'views/gantt_row.html']);
+
+angular.module("views/gantt_action_container.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("views/gantt_action_container.html",
+    "<div ng-transclude></div>");
+}]);
+
+angular.module("views/gantt_bar.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("views/gantt_bar.html",
+    "<div ng-style=\"{width:width + 'px', left:marginLeft + 'px', top:topOffset + 'px'}\" style=\"position: absolute\"\n" +
+    "     ng-class=\"{'gantt-bar-overlapped':isOverlapped}\">\n" +
+    "  <div ng-transclude></div>\n" +
+    "</div>");
+}]);
+
+angular.module("views/gantt_bar_container.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("views/gantt_bar_container.html",
+    "<div ng-transclude></div>");
+}]);
+
+angular.module("views/gantt_chart.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("views/gantt_chart.html",
+    "<div class=\"gantt-container\">\n" +
+    "  <div class=\"gantt-left-container\">\n" +
+    "    <div class=\"gantt-label-title\" ng-style=\"{top:scrollTop + 'px'}\">\n" +
+    "      {{ ngLabelTitle }}\n" +
+    "    </div>\n" +
+    "    <div class=\"gantt-labels\"></div>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div class=\"gantt-body-container\">\n" +
+    "    <div class=\"gantt-scale-container\" ng-style=\"{top:scrollTop + 'px'}\">\n" +
+    "      <div ng-repeat=\"tic in tics\" class=\"tic\" ng-style=\"{width:ngInterval*unitLength + 'px'}\">\n" +
+    "        <div class=\"tic-label\">{{tic.label}}</div>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"gantt-row-container\" ng-transclude></div>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div class=\"gantt-right-container\">\n" +
+    "    <div class=\"gantt-action-title\" ng-style=\"{top:scrollTop + 'px'}\">\n" +
+    "      {{ ngActionTitle }}\n" +
+    "    </div>\n" +
+    "    <div class=\"gantt-actions\"></div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "");
+}]);
+
+angular.module("views/gantt_chart_marker.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("views/gantt_chart_marker.html",
+    "<div ng-transclude class=\"absolute full-height\" ng-style=\"style\" style=\"top: 0\"></div>");
+}]);
+
+angular.module("views/gantt_dragable_bar.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("views/gantt_dragable_bar.html",
+    "<div ng-transclude></div>");
+}]);
+
+angular.module("views/gantt_label_container.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("views/gantt_label_container.html",
+    "<div ng-transclude></div>");
+}]);
+
+angular.module("views/gantt_resizable_bar.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("views/gantt_resizable_bar.html",
+    "<div ng-transclude></div>");
+}]);
+
+angular.module("views/gantt_row.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("views/gantt_row.html",
+    "<div ng-transclude style=\"position: relative\"></div>");
+}]);
+
 'use strict';
 
-angular.module('angularGanttChart', [])
+angular.module('angularGanttChart')
   .directive('ganttChart', function() {
     return {
       templateUrl: 'views/gantt_chart.html',
