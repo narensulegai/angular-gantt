@@ -4,8 +4,8 @@
   "dependencies": {
     "angular": ">=1.2.15",
     "underscore": "~1.6.0"
-
   },
+  "main": ["dist/src/angular_gantt_chart.js", "dist/src/angular_gantt_chart.css"],
   "homepage": "http://narensulegai.github.io/angular-gantt/",
   "devDependencies": {
   }
