@@ -262,11 +262,6 @@ module.exports = function(grunt) {
             dest: '.tmp/concat/scripts'
           }
         ]
-      },
-      directives: {
-        expand: true,
-        src: ['app/scripts/directives//**/*.js'],
-        dest: 'test/generated'
       }
     },
 
@@ -351,7 +346,41 @@ module.exports = function(grunt) {
     // concat: {
     //   dist: {}
     // },
-
+    html2js: {
+      gh_pages: {
+        options: {
+          // custom options, see below
+          rename: function(name) {
+            return name.replace('../app/views/', 'views/');
+          }
+        },
+        main: {
+          src: ['<%= yeoman.app %>/views/**/*.html'],
+          dest: '<%= yeoman.dist %>/gh_pages/angular_gantt_chart_templates.js'
+        }
+      }
+    },
+    concat: {
+      gh_pages: {
+        files: [
+          {
+            dest: '<%= yeoman.dist %>/gh_pages/angular_gantt_chart.js',
+            src: [
+              "<%= yeoman.dist %>/gh_pages/angular_gantt_chart_templates.js",
+              "<%= yeoman.app %>/scripts/directives/gantt_chart.js",
+              "<%= yeoman.app %>/scripts/directives/gantt_bar_container.js",
+              "<%= yeoman.app %>/scripts/directives/gantt_bar.js",
+              "<%= yeoman.app %>/scripts/directives/gantt_label_container.js",
+              "<%= yeoman.app %>/scripts/directives/gantt_action_container.js",
+              "<%= yeoman.app %>/scripts/directives/gantt_row.js",
+              "<%= yeoman.app %>/scripts/directives/gantt_dragable_bar.js",
+              "<%= yeoman.app %>/scripts/directives/gantt_resizable_bar.js",
+              "<%= yeoman.app %>/scripts/directives/gantt_chart_marker.js"
+            ]
+          }
+        ]
+      }
+    },
     // Test settings
     karma: {
       unit: {
@@ -410,5 +439,10 @@ module.exports = function(grunt) {
     'newer:jshint',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('gh_pages', [
+    'html2js:gh_pages',
+    'concat:gh_pages'
   ]);
 };
