@@ -2,7 +2,9 @@ angular-gantt-chart
 =
 
 > Gantt chart using Angularjs
+
 > Requires angularjs >= 1.2.16
+
 
 > Demo http://narensulegai.github.io/angular-gantt/
 
